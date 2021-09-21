@@ -4,5 +4,12 @@ exports.helloWorld = (req, res)=>{
 }
 
 exports.tom =(req, res)=>{
-    res.send("Tom says hello");
+    const name = req.body.name
+    console.log(res);
+    res.send(`${name} smells`);
+};
+
+exports.contact =(req, res)=>{
+    const name = req.body.name
+    res.send(`Hi ${name} you can contact us via ...`);
 };
