@@ -4,8 +4,8 @@ const { tom, contact } = require ("../controllers");
 
 helloRouter.get("/tom", tom);
 helloRouter.post("/tom", tom);
-helloRouter.put("./tom", tom);
-helloRouter.delete("./tom", tom);
+helloRouter.put("/tom", tom);
+helloRouter.delete("/tom", tom);
 
 
 helloRouter.get("/contact", contact);

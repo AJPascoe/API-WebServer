@@ -6,10 +6,10 @@ exports.helloWorld = (req, res)=>{
 exports.tom =(req, res)=>{
     const name = req.body.name
     console.log(res);
-    res.send(`${name} smells`);
+    res.send({message: `${name} smells`});
 };
 
 exports.contact =(req, res)=>{
     const name = req.body.name
-    res.send(`Hi ${name} you can contact us via ...`);
+    res.send({message: `Hi ${name} you can contact us via ...`});
 };
