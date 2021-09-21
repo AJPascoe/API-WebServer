@@ -1,7 +1,52 @@
+const Film = require("../models");
+
 exports.helloWorld = (req, res)=>{
     res.send("Tom&Jerry Says Hello World!");
 
 }
+
+exports.addFilm = async (req, res) => {
+    try {
+        const film = new Film(req.body)
+        await film.save();
+        res.status(200).send({film: film, message: "Successfully added film"})
+    } catch (error) {
+        res.status(500).send({err: error});
+    }
+};
+
+exports.findFilms = async (req, res) =>{
+    try {
+        const list = await Film.find({});
+        res.status(200).send({allFilms: list});
+    } catch (error) {
+        res.status(500).send({err:error});
+    }
+};
+
+exports.updateFilms = async (updateObj) => {
+    try {
+        await Film.updateOne(
+            { name: updateObj.filter },
+            { $set: {like:updateObj.like} }
+          );
+          res.status(200).send({updateFilms: updateFilms, message: "Film Suscessfly updated" });
+    } catch (error) {
+        res.status(500).send({err:error});
+    }
+
+  };
+    
+  exports.deleteFilms = async (deleteObj) => {
+      try {
+        await Film.deleteOne({ name: deleteObj.filter });
+        res.status(200).send({deleteFilms: deleteFilms, message: "Film Deleted"});
+      } catch (error) {
+        res.status(500).send({err:error});
+      }
+   
+  };
+  
 
 exports.tom =(req, res)=>{
     const name = req.body.name

@@ -1,11 +1,11 @@
 const {Router} = require ("express");
 const helloRouter = Router();
-const { tom, contact } = require ("../controllers");
+const { tom, contact, addFilm, findFilms, updateFilms, deleteFilms } = require ("../controllers");
 
-helloRouter.get("/tom", tom);
-helloRouter.post("/tom", tom);
-helloRouter.put("/tom", tom);
-helloRouter.delete("/tom", tom);
+helloRouter.get("/tom", findFilms);
+helloRouter.post("/tom", addFilm);
+helloRouter.put("/tom", updateFilms);
+helloRouter.delete("/tom", deleteFilms);
 
 
 helloRouter.get("/contact", contact);
