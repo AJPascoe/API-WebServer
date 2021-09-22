@@ -1,4 +1,4 @@
-const Film = require("../models");
+const {Film, User} = require("../models");
 
 // exports.helloWorld = (req, res)=>{
 //     res.send("Tom&Jerry Says Hello World!");
@@ -7,6 +7,7 @@ const Film = require("../models");
 
 exports.addFilm = async (req, res) => {
     try {
+        console.log(rq.user);
         const film = new Film(req.body)
         await film.save();
         res.status(200).send({film: film, message: "Successfully added film"})
@@ -46,6 +47,8 @@ exports.updateFilms = async (updateObj) => {
       }
    
   };
+
+  
   
 
 // exports.tom =(req, res)=>{
