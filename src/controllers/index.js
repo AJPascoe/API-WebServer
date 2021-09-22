@@ -48,7 +48,16 @@ exports.updateFilms = async (updateObj) => {
    
   };
 
-  
+  exports.addUser = async (req, res) =>{
+      try {
+          const user = new User(req.body);
+          await user.save();
+      } catch (error) {
+          
+      }
+  }
+
+
   
 
 // exports.tom =(req, res)=>{
