@@ -1,12 +1,17 @@
+const { hashSync } = require("bcryptjs");
 const {Router} = require ("express");
 const helloRouter = Router();
-const { addFilm, findFilms, updateFilms, deleteFilms } = require ("../controllers");
-const { testMiddle } = require("../middleware");
+const { addFilm, findFilms, updateFilms, deleteFilms, addUser, findUser } = require ("../controllers");
+const { testMiddle, hashPassword, decryptPassword } = require("../middleware");
 
 helloRouter.get("/film", findFilms);
 helloRouter.post("/film", testMiddle, addFilm);
 helloRouter.put("/film", updateFilms);
 helloRouter.delete("/film", deleteFilms);
+
+
+helloRouter.post("/user",hashPassword, addUser);
+helloRouter.post("/user/login", decryptPassword, findUser);
 
 
 // helloRouter.get("/contact", findFilms);
