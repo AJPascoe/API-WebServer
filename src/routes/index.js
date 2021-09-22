@@ -2,21 +2,21 @@ const {Router} = require ("express");
 const helloRouter = Router();
 const { tom, contact, addFilm, findFilms, updateFilms, deleteFilms } = require ("../controllers");
 
-helloRouter.get("/tom", findFilms);
-helloRouter.post("/tom", addFilm);
-helloRouter.put("/tom", updateFilms);
-helloRouter.delete("/tom", deleteFilms);
+helloRouter.get("/film", findFilms);
+helloRouter.post("/film", addFilm);
+helloRouter.put("/film", updateFilms);
+helloRouter.delete("/film", deleteFilms);
 
 
-helloRouter.get("/contact", contact);
-helloRouter.post("/contact", contact);
-helloRouter.put("/contact", contact);
-helloRouter.delete("/contact", contact);
+helloRouter.get("/contact", findFilms);
+helloRouter.post("/contact", addFilm);
+helloRouter.put("/contact", updateFilms);
+helloRouter.delete("/contact", deleteFilms);
 
-helloRouter.get("/user/contact", contact);
-helloRouter.post("/user/contact", contact);
-helloRouter.put("/user/contact", contact);
-helloRouter.delete("/user/contact", contact);
+// helloRouter.get("/user/contact", contact);
+// helloRouter.post("/user/contact", contact);
+// helloRouter.put("/user/contact", contact);
+// helloRouter.delete("/user/contact", contact);
 
 
 

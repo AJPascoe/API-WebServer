@@ -1,9 +1,9 @@
 const Film = require("../models");
 
-exports.helloWorld = (req, res)=>{
-    res.send("Tom&Jerry Says Hello World!");
+// exports.helloWorld = (req, res)=>{
+//     res.send("Tom&Jerry Says Hello World!");
 
-}
+// }
 
 exports.addFilm = async (req, res) => {
     try {
@@ -48,13 +48,13 @@ exports.updateFilms = async (updateObj) => {
   };
   
 
-exports.tom =(req, res)=>{
-    const name = req.body.name
-    console.log(res);
-    res.send({message: `${name} smells`});
-};
+// exports.tom =(req, res)=>{
+//     const name = req.body.name
+//     console.log(res);
+//     res.send({message: `${name} smells`});
+// };
 
-exports.contact =(req, res)=>{
-    const name = req.body.name
-    res.send({message: `Hi ${name} you can contact us via ...`});
-};
+// exports.contact =(req, res)=>{
+//     const name = req.body.name
+//     res.send({message: `Hi ${name} you can contact us via ...`});
+// };
