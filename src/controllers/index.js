@@ -25,28 +25,26 @@ exports.findFilms = async (req, res) =>{
     }
 };
 
-exports.updateFilms = async (updateObj) => {
-    try {
-        await Film.updateOne(
-            { name: updateObj.filter },
-            { $set: {like:updateObj.like} }
-          );
-          res.status(200).send({updateFilms: updateFilms, message: "Film Suscessfly updated" });
-    } catch (error) {
-        res.status(500).send({err:error});
-    }
+  exports.updateFilms = async (req, res) => {
+  try {
+    await Film.updateOne(
+      { name: req.body.filter },
+      { $set: { watched: req.body.update } }
+    );
+    res.status(200).send({ message: "Film Updated" });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
 
-  };
-    
-  exports.deleteFilms = async (deleteObj) => {
-      try {
-        await Film.deleteOne({ name: deleteObj.filter });
-        res.status(200).send({deleteFilms: deleteFilms, message: "Film Deleted"});
-      } catch (error) {
-        res.status(500).send({err:error});
-      }
-   
-  };
+exports.deleteFilms = async (req, res) => {
+  try {
+    await Film.deleteOne({ name: req.params.name });
+    res.status(200).send({ message: "Film Deleted" });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
 
   exports.addUser = async (req, res) =>{
       try {

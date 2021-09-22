@@ -1,4 +1,3 @@
-const { hashSync } = require("bcryptjs");
 const {Router} = require ("express");
 const helloRouter = Router();
 const { addFilm, findFilms, updateFilms, deleteFilms, addUser, findUser } = require ("../controllers");
