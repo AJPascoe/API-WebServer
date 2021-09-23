@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { User } = require("../models");
+const jwt = require("jsonwebtoken");
 
 exports.testMiddle = (req, res, next) => {
   try {
@@ -36,6 +37,16 @@ exports.decryptPassword = async (req, res, next) => {
     } else {
       throw new Error();
     }
+  } catch (error) {
+    res.status(501).send(error);
+  }
+};
+
+exports.createToken = async (req, res, next)=>{
+  try {
+    const token = jwt.sign({email: req.body.email}, process.env.SECRET);
+    req.token = token
+    next();
   } catch (error) {
     res.status(501).send(error);
   }
