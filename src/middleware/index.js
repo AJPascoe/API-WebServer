@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 
+
 exports.testMiddle = (req, res, next) => {
   try {
     console.log(req.body);
@@ -45,7 +46,19 @@ exports.decryptPassword = async (req, res, next) => {
 exports.createToken = async (req, res, next)=>{
   try {
     const token = jwt.sign({email: req.body.email}, process.env.SECRET);
-    req.token = token
+    req.token = token;
+    next();
+  } catch (error) {
+    res.status(501).send(error);
+  }
+};
+
+exports.decodeToken = (req, res, next) =>{
+  try {
+    const token = req.header("Authorization").replace("Bearer ", "")
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    const user = await User.findOne({email: decodedToken.email});
+    req.user = user;
     next();
   } catch (error) {
     res.status(501).send(error);
